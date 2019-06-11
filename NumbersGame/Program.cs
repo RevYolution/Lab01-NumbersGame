@@ -37,18 +37,20 @@ namespace NumbersGame
             Populate(userArray);
             GetSum(userArray);
             //GetProduct(userArray, sum);
-            GetQuotient(int);
+            //GetQuotient(int);
 
         }
 
         // Populates an array of numbers chosen by the users based off number given in StartSequence
         static int[] Populate(int[] userArray)
         {
+            // Allows user to input integer elements
             for (int i = 0; i < userArray.Length; i++)
             {
                 Console.WriteLine($"Please enter number {i+1} of {userArray.Length}");
                 string populationNumberInput = Console.ReadLine();
                 int populationConversion = Convert.ToInt32(populationNumberInput);
+                // Sets the current position of the array to the user input.
                 userArray[i] = populationConversion;
             }
             return userArray;
@@ -60,15 +62,17 @@ namespace NumbersGame
             int sum = 0;
             for (int i = 0; i < userArray.Length; i++)
             {
+                // Migrates though the array summing elements each iteration
                 sum += userArray[i];
             }
 
+            // Throws users an exception if their sum is below 20
             if (sum < 20)
             {
                 throw new Exception($"Value of {sum} is too low.");
             }
 
-            Console.WriteLine($"The sum is {sum}");
+            Console.WriteLine($"The sum of your numbers is {sum}");
             return sum;
         }
 
@@ -85,30 +89,30 @@ namespace NumbersGame
         //}
 
         // Gets Quotient of product from GetProduct and random user number input
-        static decimal GetQuotient(int)
-        {
-            // Asks the user to input a number to divide the previous product by
-            Console.WriteLine($"Enter a number to divide {product} by");
-            string divisor = Console.ReadLine();
-            decimal decimalConversionProduct = Convert.ToDecimal(product);
+        //static decimal GetQuotient(int)
+        //{
+        //    // Asks the user to input a number to divide the previous product by
+        //    Console.WriteLine($"Enter a number to divide {product} by");
+        //    string divisor = Console.ReadLine();
+        //    decimal decimalConversionProduct = Convert.ToDecimal(product);
 
-            // Converts users number to a decimal value type
-            decimal convertDivisor = Convert.ToDecimal(divisor);
+        //    // Converts users number to a decimal value type
+        //    decimal convertDivisor = Convert.ToDecimal(divisor);
 
-            // Sets initial value for output
-            decimal quotient = 0; 
+        //    // Sets initial value for output
+        //    decimal quotient = 0; 
                
-            try
-            {
-                quotient = decimal.Divide(decimalConversionProduct, convertDivisor);
-                Console.WriteLine($"The value of {decimalConversionProduct}/{convertDivisor} is {quotient}");
-            }
-            catch (DivideByZeroException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+        //    try
+        //    {
+        //        quotient = decimal.Divide(decimalConversionProduct, convertDivisor);
+        //        Console.WriteLine($"The value of {decimalConversionProduct}/{convertDivisor} is {quotient}");
+        //    }
+        //    catch (DivideByZeroException e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
 
-                return quotient;
-        }
+        //        return quotient;
+        //}
     }
 }
