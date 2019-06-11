@@ -16,6 +16,10 @@ namespace NumbersGame
                 Console.WriteLine($"{e.Message}");
                 
             }
+            finally
+            {
+                Console.WriteLine("Completed game!");
+            }
         }
 
         static void StartSequence()
@@ -32,8 +36,8 @@ namespace NumbersGame
             
             Populate(userArray);
             GetSum(userArray);
-            GetProduct(userArray, sum);
-            //GetQuotient(int);
+            //GetProduct(userArray, sum);
+            GetQuotient(int);
 
         }
 
@@ -56,7 +60,7 @@ namespace NumbersGame
             int sum = 0;
             for (int i = 0; i < userArray.Length; i++)
             {
-                sum = +userArray[i];
+                sum += userArray[i];
             }
 
             if (sum < 20)
@@ -64,20 +68,47 @@ namespace NumbersGame
                 throw new Exception($"Value of {sum} is too low.");
             }
 
+            Console.WriteLine($"The sum is {sum}");
             return sum;
         }
 
         // Gets product from random number picked by user and the sum from GetSum.
-        static int GetProduct(int[] userArray, int sum )
+        //static int GetProduct(int[] userArray, int sum )
+        //{
+        //    Console.WriteLine($"Pick a number between and {userArray.Length}");
+        //    int product;
+        //    string randomNumber = Console.ReadLine();
+        //    int convertRandomNumber = Convert.ToInt32(randomNumber);
+        //    product = convertRandomNumber * sum;
+
+        //    return product;
+        //}
+
+        // Gets Quotient of product from GetProduct and random user number input
+        static decimal GetQuotient(int)
         {
-            Console.WriteLine($"Pick a number between and {userArray.Length}");
-            int product;
-            string randomNumber = Console.ReadLine();
-            int convertRandomNumber = Convert.ToInt32(randomNumber);
-            product = convertRandomNumber * sum;
+            // Asks the user to input a number to divide the previous product by
+            Console.WriteLine($"Enter a number to divide {product} by");
+            string divisor = Console.ReadLine();
+            decimal decimalConversionProduct = Convert.ToDecimal(product);
 
-            return product;
+            // Converts users number to a decimal value type
+            decimal convertDivisor = Convert.ToDecimal(divisor);
+
+            // Sets initial value for output
+            decimal quotient = 0; 
+               
+            try
+            {
+                quotient = decimal.Divide(decimalConversionProduct, convertDivisor);
+                Console.WriteLine($"The value of {decimalConversionProduct}/{convertDivisor} is {quotient}");
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+                return quotient;
         }
-
     }
 }
