@@ -1,2 +1,4 @@
 # Lab01-NumbersGame
-Allows users to input and manipulate numbers
+
+## Description
+Allows users to input and manipulate numbers based off of promtps given in console
