@@ -35,6 +35,7 @@ namespace NumbersGame
             int[] userArray = new int[firstNumberConversion];
             
             Populate(userArray);
+            // Sets variables to be used by following methods base on output of called method.
             int sum =  GetSum(userArray);
             int product = GetProduct(userArray, sum);
             Convert.ToDecimal(product);
@@ -84,6 +85,13 @@ namespace NumbersGame
             int product;
             string randomNumber = Console.ReadLine();
             int convertRandomNumber = Convert.ToInt32(randomNumber);
+
+            // Checks to see if user input is within range
+            if (convertRandomNumber > userArray.Length || convertRandomNumber < 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
             // Take random number provided by user and multiplies it by sum from GetSum
             product = convertRandomNumber * sum;
 
