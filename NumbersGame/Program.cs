@@ -25,7 +25,7 @@ namespace NumbersGame
         static void StartSequence()
         {
             Console.WriteLine("Let's play a game with numbers!!");
-            Console.WriteLine("Enter a number grater than zero:");
+            Console.WriteLine("Enter a number greater than zero:");
 
             // Allows user to input a number
             string firstNumberinput = Console.ReadLine();
